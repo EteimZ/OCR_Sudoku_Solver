@@ -1,0 +1,12 @@
+<h1> OCR steps to solve sudoku</h1>
+
+{% for item in data %}
+    <img src={{item.image|safe}} alt="User Image">
+    <p> {{item.text}} </p>
+{% endfor %}
+
+
+{% for digit in digits %}
+    <img src="static/digits/{{digit|safe}}" alt="User Image">
+    <p> {{digit}} </p>
+{% endfor %}

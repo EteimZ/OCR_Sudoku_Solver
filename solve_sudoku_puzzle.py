@@ -8,6 +8,7 @@ Created on Fri Jul 16 05:11:39 2021
 
 from base.sudoku.puzzle import extract_digit
 from base.sudoku.puzzle import find_puzzle
+from base.sudoku.puzzle import imageConverter
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 from sudoku import Sudoku
@@ -32,7 +33,7 @@ def sudokuSolver(model_path, image):
 	image = imutils.resize(image, width=600)
 
 	# find the puzzle in the image and then
-	(puzzleImage, warped) = find_puzzle(image, False)
+	(puzzleImage, warped) = find_puzzle(image)
 
 	# initialize our 9x9 Sudoku board
 	board = np.zeros((9, 9), dtype="int")
@@ -67,10 +68,12 @@ def sudokuSolver(model_path, image):
 			# crop the cell from the warped transform image and then
 			# extract the digit from the cell
 			cell = warped[startY:endY, startX:endX]
-			digit = extract_digit(cell, False)
+			digit = extract_digit(cell)
+
 			
 			# verify that the digit is not empty
 			if digit is not None:
+				imageConverter(digit, f'static/digits/digit{y}{x}.png')
 				# resize the cell to 28x28 pixels and then prepare the
 				# cell for classification
 				roi = cv2.resize(digit, (28, 28))
@@ -96,6 +99,12 @@ def sudokuSolver(model_path, image):
 	solution = puzzle.solve()
 	solution.show_full()
 
+	print(puzzle.validate())
+	if puzzle.validate() == True:
+		status = "Success"
+	else:
+		status = "Failure"
+
 
 	# loop over the cell locations and board
 	for (cellRow, boardRow) in zip(cellLocs, solution.board):
@@ -119,10 +128,6 @@ def sudokuSolver(model_path, image):
 
 
 	# show the output image
-	if os.path.exists('static/image.png'):
-		print("This worked")																											
-		os.remove("static/image.png")
-	PIL_image = Image.fromarray(np.uint8(puzzleImage)).convert('RGB')
-	PIL_image.save("static/image.png")
+	imageConverter(puzzleImage, 'static/output.png')
 
-	return "Success"
+	return status
