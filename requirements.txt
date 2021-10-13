@@ -1,3 +1,5 @@
+numpy
+skimage
 Scipy
 imutils
 py-sudoku
