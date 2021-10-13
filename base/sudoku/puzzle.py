@@ -14,6 +14,7 @@ import imutils
 from PIL import Image
 import os
 import cv2
+import glob
 
 def find_puzzle(image):
 	# convert the image to grayscale and blur it slightly
@@ -121,9 +122,21 @@ def extract_digit(cell, debug=False):
     # return the digit to the calling function
 	return digit
 
-
+# Function to convert image and save iamge 
 def imageConverter(image, path):
 	if os.path.exists(path):																									
 		os.remove(path)
 	PIL_image = Image.fromarray(np.uint8(image)).convert('RGB')
 	PIL_image.save(path)
+
+# Function to delete all images in digits
+def deleteDigit(path):
+	# Use glob module to grab files pathern 
+	files = glob.glob(path + '/*')
+	
+	if files != []:
+		# Interate over files
+		for file in files:
+			os.remove(file)
+	else:
+		pass

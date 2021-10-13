@@ -8,7 +8,7 @@ Created on Fri Jul 16 05:11:39 2021
 
 from base.sudoku.puzzle import extract_digit
 from base.sudoku.puzzle import find_puzzle
-from base.sudoku.puzzle import imageConverter
+from base.sudoku.puzzle import imageConverter, deleteDigit
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 from sudoku import Sudoku
@@ -48,6 +48,9 @@ def sudokuSolver(model_path, image):
 	# location
 	cellLocs = []
 
+	# Delete all files in the digits folder
+	deleteDigit('static/digits')
+
 	# loop over the grid locations
 	for y in range(0, 9):
 		# initialize the current list of cell locations
@@ -73,7 +76,6 @@ def sudokuSolver(model_path, image):
 			
 			# verify that the digit is not empty
 			if digit is not None:
-				imageConverter(digit, f'static/digits/digit{y}{x}.png')
 				# resize the cell to 28x28 pixels and then prepare the
 				# cell for classification
 				roi = cv2.resize(digit, (28, 28))
@@ -86,6 +88,9 @@ def sudokuSolver(model_path, image):
 
 				pred = model.predict(roi).argmax(axis=1)[0]
 				board[y, x] = pred
+				
+				# Saving and converting iamge along predicted values
+				imageConverter(digit, f'static/digits/digit{y}{x}_{pred}.png')
 				
 		# add the row to our cell locations
 		cellLocs.append(row)

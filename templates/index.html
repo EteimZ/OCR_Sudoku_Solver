@@ -1,25 +1,41 @@
-<!doctype html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport"
-                content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% extends "base.html" %}
+{% block content %}
+    <h2 class="mt-3"> Sudoku Solver with OCR </h2>
 
-            <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-            <title>Document</title>
-        </head>
-    <body>
+    <p> Welcome, this is an Optical Character recognition(OCR) sudoku solver 
+    <br> Simply upload a clear image of the Sudoku board and let the AI do the rest </p> 
         
-        <h1> Sudoku Solver </h1>
-        
-        <p> Upload Sudoku Image</p>
+    
 
-        <form method="post" enctype="multipart/form-data">
-            <input type="file" name="file1" width="600" height="600">
-            <input type=submit value=Upload>
-        </form>
+    
+    <form method="post" enctype="multipart/form-data">
 
-        <script src="{{ url_for('static', filename='script.js') }}"></script>
-    </body>
-</html>
+        <div class="row">
+          <div class="col">
+            <input class="form-control" type="file" name="file1" id="formFile">
+          </div>
+          <div class="col">
+            <input class="btn btn-outline-primary" type=submit value=Predict>
+          </div>
+        </div>        
+    </form>
+
+    <img class="mt-3 invisible" id="output" width="400" height="400"/>
+
+    <script>
+
+        let sudoku = document.getElementById('formFile')
+
+        let loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.classList.replace('invisible', 'visible')
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+        sudoku.addEventListener('change', loadFile)
+
+    </script>
+
+
+{% endblock %}
+

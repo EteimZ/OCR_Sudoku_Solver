@@ -1,3 +1,8 @@
-<h1> Sudoku Result </h1>
-<img src="{{ url_for('static', filename='output.png') }}" alt="User Image">
-<p>Sudoku wasn't solved succesfully</p>            
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="mb-2"> Sudoku Result </h1>
+    <img class="mb-2" src="{{ url_for('static', filename='output.png') }}" alt="User Image">
+<p>Sudoku wasn't solved succesfully <a href="/steps" class="link-fail">click here </a> to see the steps </p>
+
+{% endblock %}

@@ -1,12 +1,18 @@
-<h1> OCR steps to solve sudoku</h1>
+{% extends "base.html" %}
+{% block content %}
 
-{% for item in data %}
-    <img src={{item.image|safe}} alt="User Image">
-    <p> {{item.text}} </p>
-{% endfor %}
+    <h1> OCR steps to solve sudoku</h1>
 
+    {% for item in data %}
+        <img src={{item.image|safe}} alt="User Image"  width="400" height="400">
+        <p> {{item.text}} </p>
+    {% endfor %}
 
-{% for digit in digits %}
-    <img src="static/digits/{{digit|safe}}" alt="User Image">
-    <p> {{digit}} </p>
-{% endfor %}
+    <h2> Digits and their corresponding predicted values: </h2>
+
+    {% for digit, pred in digits %}
+        <img src="static/digits/{{digit|safe}}" alt="User Image">
+        <p> Image was predicted as {{pred}} </p>
+    {% endfor %}
+
+{% endblock %}
