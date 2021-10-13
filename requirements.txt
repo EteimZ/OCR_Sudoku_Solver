@@ -1,3 +1,4 @@
+py-sudoku
 tensorflow-cpu
 flask
 gunicorn

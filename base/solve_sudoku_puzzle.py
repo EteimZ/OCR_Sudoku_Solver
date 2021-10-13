@@ -6,9 +6,9 @@ Created on Fri Jul 16 05:11:39 2021
 @author: eteims
 """
 
-from base.sudoku.puzzle import extract_digit
-from base.sudoku.puzzle import find_puzzle
-from base.sudoku.puzzle import imageConverter, deleteDigit
+from base.puzzle import extract_digit
+from base.puzzle import find_puzzle
+from base.puzzle import imageConverter, deleteDigit
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 from sudoku import Sudoku
