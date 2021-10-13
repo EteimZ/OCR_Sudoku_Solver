@@ -88,7 +88,7 @@ def sudokuSolver(model_path, image):
 				board[y, x] = pred
 				
 				# Saving and converting iamge along predicted values
-				imageConverter(digit, f'static/digits/digit{y}{x}_{pred}.png')
+				imageConverter(digit, f'app/static/digits/digit{y}{x}_{pred}.png')
 				
 		# add the row to our cell locations
 		cellLocs.append(row)
@@ -131,6 +131,6 @@ def sudokuSolver(model_path, image):
 
 
 	# show the output image
-	imageConverter(puzzleImage, 'static/output.png')
+	imageConverter(puzzleImage, 'app/static/output.png')
 
 	return status

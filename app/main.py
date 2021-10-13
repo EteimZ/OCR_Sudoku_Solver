@@ -3,10 +3,10 @@ from base.solve_sudoku_puzzle import sudokuSolver
 import os
 
 
-UPLOAD_FOLDER = './static'
+UPLOAD_FOLDER = './app/static'
 
 # saved model 
-model_path = "saved_model/digit_classifier.h5"
+model_path = "./saved_model/digit_classifier.h5"
 
 app = Flask(__name__)
 
@@ -45,13 +45,13 @@ def fail():
 @app.route('/steps')
 def steps():
     data = [
-            {'image': 'static/input.png', 'text': 'Original Sudoku Image'},
-            {'image': 'static/Threshold.png', 'text': 'Thresholded version of Image'},
-            {'image': 'static/outline.png', 'text': 'Detect contour of sudoku board'},
-            {'image': 'static/transform.png', 'text': 'Applying Perpective Transform'}
+            {'image': './app/static/input.png', 'text': 'Original Sudoku Image'},
+            {'image': './app/static/Threshold.png', 'text': 'Thresholded version of Image'},
+            {'image': './app/static/outline.png', 'text': 'Detect contour of sudoku board'},
+            {'image': './app/static/transform.png', 'text': 'Applying Perpective Transform'}
     ]
 
-    digits = os.listdir('static/digits')
+    digits = os.listdir('./app/static/digits')
     digits.sort()
 
     pred = [] # Empty predicted list

@@ -29,7 +29,7 @@ def find_puzzle(image):
 	# processing pipeline (in this case, thresholding)
 	
 	# Store and convert threshhold image
-	imageConverter(thresh, "static/Threshold.png")
+	imageConverter(thresh, "app/static/Threshold.png")
 
         
 	# find contours in the thresholded image and sort them by size in
@@ -63,7 +63,7 @@ def find_puzzle(image):
 	# it to our screen for visualization/debugging purposes
 	output = image.copy()
 	cv2.drawContours(output, [puzzleCnt], -1, (0, 255, 0), 2)
-	imageConverter(output, "static/outline.png")
+	imageConverter(output, "app/static/outline.png")
 
         
 	# apply a four point perspective transform to both the original
@@ -73,12 +73,12 @@ def find_puzzle(image):
 	warped = four_point_transform(gray, puzzleCnt.reshape(4, 2))
 	# check to see if we are visualizing the perspective transform
 	
-	imageConverter(puzzle, "static/transform.png")
+	imageConverter(puzzle, "app/static/transform.png")
 
 	# return a 2-tuple of puzzle in both RGB and grayscale
 	return (puzzle, warped)
 
-def extract_digit(cell, debug=False):
+def extract_digit(cell):
 	
     # apply automatic thresholding to the cell and then clear any
 	# connected borders that touch the border of the cell
@@ -88,7 +88,7 @@ def extract_digit(cell, debug=False):
 	
     # check to see if we are visualizing the cell thresholding step
 
-	imageConverter(thresh, "static/thresh.png")
+	imageConverter(thresh, "app/static/thresh.png")
 
         
 	# find contours in the thresholded cell
