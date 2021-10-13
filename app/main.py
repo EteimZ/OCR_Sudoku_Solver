@@ -45,10 +45,10 @@ def fail():
 @app.route('/steps')
 def steps():
     data = [
-            {'image': './app/static/input.png', 'text': 'Original Sudoku Image'},
-            {'image': './app/static/Threshold.png', 'text': 'Thresholded version of Image'},
-            {'image': './app/static/outline.png', 'text': 'Detect contour of sudoku board'},
-            {'image': './app/static/transform.png', 'text': 'Applying Perpective Transform'}
+            {'image': 'static/input.png', 'text': 'Original Sudoku Image'},
+            {'image': 'static/Threshold.png', 'text': 'Thresholded version of Image'},
+            {'image': 'static/outline.png', 'text': 'Detect contour of sudoku board'},
+            {'image': 'static/transform.png', 'text': 'Applying Perpective Transform'}
     ]
 
     digits = os.listdir('./app/static/digits')
