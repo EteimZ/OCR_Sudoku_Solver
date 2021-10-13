@@ -1,3 +1,4 @@
+Scipy
 imutils
 py-sudoku
 tensorflow-cpu
