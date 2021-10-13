@@ -1,5 +1,5 @@
-static/digits/*
-static/*.png
+app/static/digits/*
+app/static/*.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

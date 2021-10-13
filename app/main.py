@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from google.protobuf import message
 from solve_sudoku_puzzle import sudokuSolver
 import os
 

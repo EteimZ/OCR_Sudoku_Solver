@@ -12,11 +12,9 @@ from base.sudoku.puzzle import imageConverter, deleteDigit
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 from sudoku import Sudoku
-from PIL import Image
 import numpy as np
 import imutils
 import cv2
-import os
 
 
 def sudokuSolver(model_path, image):
