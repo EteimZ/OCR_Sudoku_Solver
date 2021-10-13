@@ -47,7 +47,7 @@ def sudokuSolver(model_path, image):
 	cellLocs = []
 
 	# Delete all files in the digits folder
-	deleteDigit('static/digits')
+	deleteDigit('app/static/digits')
 
 	# loop over the grid locations
 	for y in range(0, 9):
