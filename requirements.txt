@@ -1,3 +1,4 @@
+imutils
 py-sudoku
 tensorflow-cpu
 flask
