@@ -48,7 +48,7 @@ def steps():
     data = [
             {'image': 'static/input.png', 'text': 'Original Sudoku Image'},
             {'image': 'static/Threshold.png', 'text': 'Thresholded version of Image'},
-            {'image': 'static/outline.png', 'text': 'Detect contour of Image'},
+            {'image': 'static/outline.png', 'text': 'Detect contour of sudoku board'},
             {'image': 'static/transform.png', 'text': 'Applying Perpective Transform'}
     ]
 
