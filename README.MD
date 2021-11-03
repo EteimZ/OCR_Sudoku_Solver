@@ -6,6 +6,20 @@ A Sudoku solver web app built with flask and tensorflow.
 
 Deployed [here](https://ocrsudokusolver.herokuapp.com/) on heroku.
 
+## steps
+
+Upload sudoku image and click predict then wait for result.
+
+![sudoku image](img/index.png)
+
+Sudoku result will be outputed either correct or incorrect
+
+![Result image](img/result.png)
+
+You can get the steps taken by the model by clicking the *click here* link.
+
+![Steps](img/steps.png)
+
 ## Run locally
 
 Clone github repo:
